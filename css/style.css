@@ -6,12 +6,7 @@
 
 
 .login-btn{
-    /* border: 1px solid #405cf5;
-    border-radius: 6px ;
-    background-color: transparent;
-  height: 44px;
-  width: 100%;
- margin-left: 0 50px; */
+   
  appearance: button;
   backface-visibility: hidden;
   background-color:transparent;
@@ -58,8 +53,6 @@
    margin: 0 0;
   outline: none;
   overflow: hidden;
- /* width: 100px; */
-
   text-align: center;
   text-transform: none;
   transform: translateZ(0);
@@ -101,7 +94,7 @@
     font-weight: bold;
     font-size: 40px;
     color: #DF490D;
-    /* color: rgb(16, 16, 67); */
+   
 }
 .hero-left{
     padding-top: 8%;
@@ -266,7 +259,7 @@ h1{
     display: flex;
     flex-direction: column;
     padding-left: 10%;
-    /* justify-content: space-around; */
+   
   }
   .footer-nav a{
     text-decoration: none;

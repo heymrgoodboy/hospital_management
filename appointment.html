@@ -1,81 +1,86 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Appointment</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../project/css/appointment.css">
-    <style>
-      /* Custom CSS */
-      .issue-input {
-        resize: vertical; /* Allow vertical resizing */
-        min-height: 100px; /* Set a minimum height */
-      }
-    </style>
-  </head>
-  <body>
-   
- <div class="container ">
-  <div class="row ps-5">
-      <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-              <img src="../project/images/appointment.jpeg" class="card-img-top" alt="...">
-          <!-- Left photo -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Appointment</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="appointment.css">
+  <style>
+    /* Custom CSS */
+    .issue-input {
+      resize: vertical; /* Allow vertical resizing */
+      min-height: 100px; /* Set a minimum height */
+    }
+  </style>
+</head>
+<body>
 
-        </div>
-        </div>
-        <div class="col-md-4">
-          <!-- Form -->
-          <form class="row g-3" action="book.php" method="POST">
-            <div class="col-md-12">
-              <label for="fullName" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="fullName" name="name">
-            </div>
-            <div class="col-md-12">
-              <label for="regNumber" class="form-label">Registration Number</label>
-              <input type="text" class="form-control" id="regNumber" name="reg_no">
-            </div>
-            <div class="col-md-6">
-              <label for="age" class="form-label">Age</label>
-              <input type="text" class="form-control" id="age" name="age">
-            </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email">
-            </div>
-            <div class="col-md-6">
-              <label for="phoneNumber" class="form-label">Phone Number</label>
-              <input type="text" class="form-control" id="phoneNumber" name="phone_number">
-            </div>
-            <div class="col-md-6">
-              <label for="appointmentDate" class="form-label">Date</label>
-              <input type="date" class="form-control" id="appointmentDate" name="date">
-            </div>
-            <div class="col-md-6">
-              <label for="appointmentTime" class="form-label">Time</label>
-              <input type="time" class="form-control" id="appointmentTime" name="time">
-            </div>
-            <div class="col-md-12">
-              <label for="issue" class="form-label">Issue</label>
-              <textarea class="form-control issue-input" id="issue" name="issue"></textarea>
-            </div>
-            <div class="col-md-6">
-              <label for="doctorName" class="form-label">Doctor's Name</label>
-              <input type="text" class="form-control" id="doctorName" name="doctorname">
-            </div>
-            <div class="col-md-12">
-              <input type="submit" name="submit" class="btn btn-primary">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-4 text-center">
-          <!-- Right photo -->
-          <img src="../project/images/appointment1.jpeg" class="img-fluid" >
-        </div>
+<div class="container">
+  <div class="row ps-1">
+    <div class="col-md-4">
+      <div class="card mt-2" style="width: 10rem">
+        <img src="../project/images/appointment.jpeg" class="card-img-top" alt="...">
+        <!-- Left photo -->
       </div>
     </div>
-  </body>
+    <div class="col-md-4 border my-5 bg-light rounded-3  overflow-auto p-3" style="height: 30rem;">
+      <!-- Form -->
+      <form class="row g-3" action="book.php" method="POST" id="appointmentForm">
+        <div class="col-md-12">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" name="name">
+        </div>
+        <div class="col-md-12">
+          <label for="regNumber" class="form-label">Registration Number</label>
+          <input type="text" class="form-control" id="regNumber" name="reg_no">
+        </div>
+        <div class="col-md-6">
+          <label for="age" class="form-label">Age</label>
+          <input type="text" class="form-control" id="age" name="age">
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="col-md-6">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phone_number">
+        </div>
+        <div class="col-md-6">
+          <label for="appointmentDate" class="form-label">Date</label>
+          <input type="date" class="form-control" id="appointmentDate" name="date">
+        </div>
+        <div class="col-md-6">
+          <label for="appointmentTime" class="form-label">Time</label>
+          <input type="time" class="form-control" id="appointmentTime" name="time">
+        </div>
+        <div class="col-md-12">
+          <label for="issue" class="form-label">Issue</label>
+          <textarea class="form-control issue-input" id="issue" name="issue"></textarea>
+        </div>
+        <div class="col-md-6">
+          <label for="doctorName" class="form-label">Doctor's Name</label>
+          <input type="text" class="form-control" id="doctorName" name="doctorname">
+        </div>
+        <div class="col-md-12">
+          <input type="submit" name="submit" class="btn btn-primary" id="submitButton">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 text-center mt-2">
+      <!-- Right photo -->
+      <img src="../project/images/appointment1.jpeg" class="img-fluid rounded" >
+    </div>
+  </div>
+</div>
+
+
+</body>
 </html>
+```
+
+Now, after successfully submitting the form, a pop-up message will appear saying "Appointment booked successfully!" and then the page will redirect to "verified.html".

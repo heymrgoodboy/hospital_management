@@ -38,14 +38,14 @@ $conn->close();
             <li><i class="fa-solid fa-bars"></i>&nbsp; <span >Dashboard</span> </li>
            </a>
             <a href="registration.php">
-                <li><i class="fa-solid fa-file-pen"></i>&nbsp;<span>Registrations</span> </li>
+                <li><i class="fa-solid fa-file-pen"></i>&nbsp;<span>Appointments</span> </li>
             </a>
             <a href="addPatient.html">
                 <li><i class="fa-solid fa-user-plus"></i>&nbsp;<span>Add Patient</span> </li>
             </a>
             <a href="history.html">
                 <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>History</span> </li>
-            </a> <a href="user.html">
+            </a> <a href="user.php">
                 <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>Users</span> </li>
             </a>
 
@@ -91,8 +91,9 @@ $conn->close();
             echo "<td>".$row['issue']."</td>";
             echo "<td>".$row['doctorname']."</td>";
             echo "<td>
-            <button class='tick-btn'>✔</button>
+
             <button class='dlt-btn'>X</button>
+            <a class='tick-btn' href='test1.php? patient_id=".$row['id']."'>✔</a>
 
             </td>";
             echo "</tr>";
@@ -128,6 +129,24 @@ $conn->close();
             $(this).closest('tr').remove();
         });
     });
+    window.onload = function() {
+            // Function to get URL parameters
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+
+            // Autofill form fields with appointment details
+            document.getElementById("fullname").value = getUrlParameter("fullname");
+            document.getElementById("regno").value = getUrlParameter("regno");
+            document.getElementById("age").value = getUrlParameter("age");
+            document.getElementById("email").value = getUrlParameter("email");
+            document.getElementById("phone").value = getUrlParameter("phone");
+            document.getElementById("doctor").value = getUrlParameter("doctor");
+        };
+    
 </script>
 </body>
 
