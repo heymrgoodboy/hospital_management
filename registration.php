@@ -49,7 +49,7 @@ $conn->close();
             <a href="addPatient.html">
                 <li><i class="fa-solid fa-user-plus"></i>&nbsp;<span>Add Patient</span> </li>
             </a>
-            <a href="history.html">
+            <a href="history.php">
                 <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>History</span> </li>
             </a> <a href="user.php">
                 <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>Users</span> </li>

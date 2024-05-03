@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
                             </div>
                             <table>
                                 <tr>
-                                    <th>Drug Code</th>
+                                   
                                     <th>Name of the Medicine</th>
                                     <th>Strength</th>
                                     <th>Size</th>
@@ -125,7 +125,7 @@ if ($result->num_rows > 0) {
                                     <th>Instructions</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="drug_id"></td>
+                                    
                                     <td><input type="text" name="Medicine"></td>
                                     <td><input type="text" name="size"></td>
                                     <td><input type="text" name="Quantity"></td>

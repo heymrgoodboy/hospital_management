@@ -12,6 +12,10 @@ if(isset($_POST['submit'])){
         {
             if($row=mysqli_fetch_assoc($result))
             {
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                // var_dump($_SESSION['user_id'] = $row['id']);
+                // die();
                 if($row["role"] == 1)
                 {
                     echo "<script>alert('admin');</script>";

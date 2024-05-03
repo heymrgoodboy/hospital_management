@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $_POST['age'];
     $doctor = $_POST['doctor'];
     $issue = $_POST['issue'];
-    $drug_id = $_POST['drug_id'];
+   
     $Medicine = $_POST['Medicine'];
     $size = $_POST['size'];
     $Quantity = $_POST['Quantity'];
@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Instructions = $_POST['Instructions'];
 
     // Construct the SQL query
-    $sql = "INSERT INTO prescription (fullname, registration_no, time, date, email, phone_number, post, age, doctor_name, issue, drug_id, medicine, strength, size, quantity, instruction) 
-            VALUES ('$full_name', '$reg_number', '$time', '$date', '$email', '$phone_number', '$post', '$age', '$doctor', '$issue', '$drug_id', '$Medicine', '$Strength', '$size', '$Quantity', '$Instructions')";
+    $sql = "INSERT INTO prescription (fullname, registration_no, time, date, email, phone_number, post, age, doctor_name, issue, medicine, strength, size, quantity, instruction) 
+            VALUES ('$full_name', '$reg_number', '$time', '$date', '$email', '$phone_number', '$post', '$age', '$doctor', '$issue', '$Medicine', '$Strength', '$size', '$Quantity', '$Instructions')";
 
     // Execute the query
     if ($conn->query($sql) === TRUE) {
