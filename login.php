@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
                 if($row["role"] == 1)
                 {
                     echo "<script>alert('admin');</script>";
-                    header("Location: admin.html");
+                    header("Location: admin.php");
                 }
                 else if($row["role"] == 0)
                 {

@@ -1,19 +1,3 @@
-<?php
-// Connect to the database
-$conn = new mysqli("localhost", "root", "", "hospital");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Query to fetch registration details from the user table
-$sql = "SELECT * FROM appointment ORDER BY id DESC";
-$result = $conn->query($sql);
-
-// Close the database connection
-$conn->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,107 +43,100 @@ $conn->close();
             </a>
 
         </ul>
-        
     </div>
     <div class="container">
-
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit" class="add-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="user">
+                    <a href="#">
+                        <button class="add-new-btn">Add New</button>
+                    </a>
+                    <a href="logout.php ">
+                        <button class="add-btn">Logout</button>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="content">
-
+            <div class="cards">
+                <!-- Your cards here -->
+            </div>
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Appointments Booking</h2>
-
+                        <h2>All Patient History</h2>
+                        <a href="#">
+                            <button class="add-btn">View All</button>
+                        </a>
                     </div>
                     <table>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Registration Number</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
-                            <th>Date</th>
-                            <th>Time</th>
                             <th>Medical Issue</th>
                             <th>Doctor Name</th>
-                            <th>Actions</th>
+                            <th>More Details</th>
                         </tr>
-
                         <?php
+                        // Include your database connection file
+                        $conn = new mysqli("localhost", "root", "", "hospital");
+
+                        // Query to fetch data from the prescription table
+                        $sql = "SELECT * FROM prescription ORDER BY p_id ASC";
+                        $result = $conn->query($sql);
+
+                        // Check if there are any results
                         if ($result->num_rows > 0) {
+                            // Output data of each row
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row['id'] . "</td>";
-                                echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['reg_no'] . "</td>";
-                                echo "<td>" . $row['age'] . "</td>";
-                                echo "<td>" . $row['email'] . "</td>";
-                                echo "<td>" . $row['phone_number'] . "</td>";
-                                echo "<td>" . $row['date'] . "</td>";
-                                echo "<td>" . $row['time'] . "</td>";
-                                echo "<td>" . $row['issue'] . "</td>";
-                                echo "<td>" . $row['doctorname'] . "</td>";
-                                echo "<td>
-
-            <button class='dlt-btn'>X</button>
-            <a class='tick-btn' href='test1.php? patient_id=" . $row['id'] . "'>✔</a>
-
-            </td>";
+                                echo "<td>" . $row["p_id"] . "</td>";
+                                echo "<td>" . $row["fullname"] . "</td>";
+                                echo "<td>" . $row["registration_no"] . "</td>";
+                                echo "<td>" . $row["issue"] . "</td>";
+                                echo "<td>" . $row["doctor_name"] . "</td>";
+                                echo '<td>
+                                <button class="detail-btn" onclick="fetchDetails(' . $row['p_id'] . ')">View</button>
+                              </td>';
                                 echo "</tr>";
-
-
                             }
+                        } else {
+                            echo "<tr><td colspan='6'>No data available</td></tr>";
                         }
+                        // Close the database connection
+                        $conn->close();
                         ?>
-
-                        </tr>
-
-
                     </table>
                 </div>
-
             </div>
         </div>
-
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
         integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $(document).ready(function () {
-            $('table').on('click', '.tick-btn', function () {
-                $(this).closest('tr').css('background-color', '#EBDACB'); // Change the color as needed
-            });
-        });
-
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('table').on('click', '.dlt-btn', function () {
-                $(this).closest('tr').remove();
-            });
-        });
-        window.onload = function () {
-            // Function to get URL parameters
-            function getUrlParameter(name) {
-                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-                var results = regex.exec(location.search);
-                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        <script>
+        function fetchDetails(p_id) {
+    // Send an AJAX request to fetch data from the prescription table
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'view.php?p_id=' + p_id, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Update the content with the fetched data
+                document.getElementById('prescriptionDetails').innerHTML = xhr.responseText;
+            } else {
+                console.error('Error fetching data');
             }
-
-            // Autofill form fields with appointment details
-            document.getElementById("fullname").value = getUrlParameter("fullname");
-            document.getElementById("regno").value = getUrlParameter("regno");
-            document.getElementById("age").value = getUrlParameter("age");
-            document.getElementById("email").value = getUrlParameter("email");
-            document.getElementById("phone").value = getUrlParameter("phone");
-            document.getElementById("doctor").value = getUrlParameter("doctor");
-        };
-
-    </script>
+        }
+    };
+    xhr.send();
+}
+</script>
 </body>
 
 </html>

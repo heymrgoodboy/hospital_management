@@ -18,7 +18,7 @@
             <img class="logo" src="../project/images/logo-removebg-preview.png" alt="">
         </div>
         <ul>
-           <a href="admin.html">
+           <a href="admin.php">
             <li><i class="fa-solid fa-bars"></i>&nbsp; <span >Dashboard</span> </li>
            </a>
             <a href="registration.php">
@@ -27,8 +27,10 @@
             <a href="addPatient.html">
                 <li><i class="fa-solid fa-user-plus"></i>&nbsp;<span>Add Patient</span> </li>
             </a>
+            
             <a href="history.php">
-                <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>History</span> </li>
+                <li><i class="fa-solid fa-clock"></i>&nbsp;<span>History</span> </li>
+            </a>
             </a>
             <a href="user.php">
                 <li><i class="fa-solid fa-notes-medical"></i>&nbsp;<span>Users</span> </li>

@@ -35,7 +35,7 @@ $conn->close();
             <img class="logo" src="../project/images/logo-removebg-preview.png" alt="">
         </div>
         <ul>
-           <a href="admin.html">
+           <a href="admin.php">
             <li><i class="fa-solid fa-bars"></i>&nbsp; <span >Dashboard</span> </li>
            </a>
             <a href="registration.html">
