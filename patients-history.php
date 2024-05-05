@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Connect to the database
 $conn = new mysqli("localhost", "root", "", "hospital");
 
@@ -7,10 +6,9 @@ $conn = new mysqli("localhost", "root", "", "hospital");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$curr_user_id = $_SESSION['user_id'];
-// echo $curr_user_id;
+
 // Query to fetch registration details from the user table
-$sql = "SELECT * FROM prescription WHERE user_id = $curr_user_id ORDER BY p_id DESC";
+$sql = "SELECT * FROM prescription ORDER BY p_id DESC";
 $result = $conn->query($sql);
 
 // Close the database connection

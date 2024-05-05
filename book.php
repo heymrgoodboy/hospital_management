@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_POST['submit'])) {
 
     // Establish connection to the database
@@ -21,10 +21,11 @@ if (isset($_POST['submit'])) {
         $time = $_POST['time'];
         $issue = $_POST['issue'];
         $doctorname = $_POST['doctorname'];
+        $curr_user_id = $_SESSION['user_id'];
 
-        // SQL query to insert data into the 'appointment' table
-        $query = "INSERT INTO appointment (name, reg_no, age, email, phone_number, date, time, issue, doctorname)
-                  VALUES ('$name', '$reg_no', '$age', '$email', '$phone_number', '$date', '$time', '$issue', '$doctorname')";
+        // SQL query to insert data into the 'apposintment' table
+        $query = "INSERT INTO appointment (user_id, name, reg_no, age, email, phone_number, date, time, issue, doctorname)
+                  VALUES ('$curr_user_id', '$name', '$reg_no', '$age', '$email', '$phone_number', '$date', '$time', '$issue', '$doctorname')";
 
         // Execute query
         if($conn->query($query) === TRUE){
