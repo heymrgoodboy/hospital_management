@@ -1,3 +1,22 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "hospital");
+
+// Query to fetch data from the prescription table
+$sql = "SELECT * FROM prescription ORDER BY p_id ASC";
+$result = $conn->query($sql);
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search']) && !empty($_GET['query'])) {
+    // Get the search query
+    $searchQuery = $_GET['query'];
+
+    // echo $searchQuery;
+    // die();
+
+    // Query to search for matching records in the prescription table
+    $sql = "SELECT * FROM prescription WHERE fullname LIKE '%$searchQuery%' OR issue LIKE '%$searchQuery%' OR doctor_name LIKE '%$searchQuery%' ORDER BY p_id ASC";
+    $result = $conn->query($sql);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,9 +67,15 @@
         <div class="header">
             <div class="nav">
                 <div class="search">
-                    <input type="text" placeholder="Search..">
-                    <button type="submit" class="add-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <form id="searchForm" method="GET" action="">
+                        <input type="text" name="query" placeholder="Search.." id="searchInput">
+                        <button type="submit" class="add-btn" id="searchButton"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="hidden" name="search" value="true">
+                    </form>
                 </div>
+
+
                 <div class="user">
                     <a href="#">
                         <button class="add-new-btn">Add New</button>
@@ -83,12 +108,6 @@
                             <th>More Details</th>
                         </tr>
                         <?php
-                        // Include your database connection file
-                        $conn = new mysqli("localhost", "root", "", "hospital");
-
-                        // Query to fetch data from the prescription table
-                        $sql = "SELECT * FROM prescription ORDER BY p_id ASC";
-                        $result = $conn->query($sql);
 
                         // Check if there are any results
                         if ($result->num_rows > 0) {
@@ -119,24 +138,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
         integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
+    <script>
         function fetchDetails(p_id) {
-    // Send an AJAX request to fetch data from the prescription table
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'view.php?p_id=' + p_id, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Update the content with the fetched data
-                document.getElementById('prescriptionDetails').innerHTML = xhr.responseText;
-            } else {
-                console.error('Error fetching data');
-            }
+            // Send an AJAX request to fetch data from the prescription table
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'view.php?p_id=' + p_id, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Update the content with the fetched data
+                        document.getElementById('prescriptionDetails').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Error fetching data');
+                    }
+                }
+            };
+            xhr.send();
         }
-    };
-    xhr.send();
-}
-</script>
+    </script>
 </body>
 
 </html>

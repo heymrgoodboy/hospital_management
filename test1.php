@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
     $age = $row['age'];
     //$doctor = $row['doctor'];
     $issue = $row['issue'];
+    $user_id = $row['user_id'];
     // Assuming you have other fields in the patients table
     
     // Close the database connection
@@ -87,6 +88,7 @@ if ($result->num_rows > 0) {
                     <div class="form-div">
                         <form action="prescription.php" method="POST">
                             <div class="d-flex">
+                                <input class="input-form" type="text" name="user_id" value="<?php echo $user_id; ?>" hidden>
                                 <input class="input-form" placeholder="Full Name" type="text" name="full_name" value="<?php echo $full_name; ?>">
                                 <input placeholder="Registration Number" class="input-form" type="text" name="reg_number" value="<?php echo $reg_number; ?>">
                                 <input placeholder="Time eg. 3:00 PM" class="input-form" type="text" name="time" value="<?php echo $time; ?>">

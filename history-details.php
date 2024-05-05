@@ -41,6 +41,10 @@ $conn->close();
         <div class="row">
             <h2 class="text-center mt-2">Patient Details</h2>
             <div class="col">
+                    <button class="btn btn-primary mb-2" onclick="print();">Print</button>
+                <a href="pdf.php?patient_id=<?php echo $row['p_id'] ?>">
+                    <button class="btn btn-success mb-2">Download</button>
+                </a>
                 <div class="card">
                     <div class="card-body">
                         <div class="row fw-bold">
@@ -59,14 +63,14 @@ $conn->close();
                         </div>
                         <div class="row fw-bold mt-2">
                             <div class="col">Registration number</div>
-                            <div class="col">Drug id</div>
+                            <!-- <div class="col">Drug id</div>  -->
                             <div class="col">Medicine</div>
                             <div class="col">Strength</div>
                             <div class="col">Size</div>
                         </div>
                         <div class="row">
                             <div class="col"><?php echo $row['registration_no'] ?></div>
-                            <div class="col"><?php echo $row['drug_id'] ?></div>
+                            <!-- <div class="col"><?php echo $row['drug_id'] ?></div> -->
                             <div class="col"><?php echo $row['medicine'] ?></div>
                             <div class="col"><?php echo $row['strength'] ?></div>
                             <div class="col"><?php echo $row['size'] ?></div>

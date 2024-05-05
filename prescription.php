@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Retrieve form data
+    $user_id = $_POST['user_id'];
     $full_name = $_POST['full_name'];
     $reg_number = $_POST['reg_number'];
     $time = $_POST['time'];
@@ -27,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Instructions = $_POST['Instructions'];
 
     // Construct the SQL query
-    $sql = "INSERT INTO prescription (fullname, registration_no, time, date, email, phone_number, post, age, doctor_name, issue, medicine, strength, size, quantity, instruction) 
-            VALUES ('$full_name', '$reg_number', '$time', '$date', '$email', '$phone_number', '$post', '$age', '$doctor', '$issue', '$Medicine', '$Strength', '$size', '$Quantity', '$Instructions')";
+    $sql = "INSERT INTO prescription (user_id, fullname, registration_no, time, date, email, phone_number, post, age, doctor_name, issue, medicine, strength, size, quantity, instruction) 
+            VALUES ('$user_id', '$full_name', '$reg_number', '$time', '$date', '$email', '$phone_number', '$post', '$age', '$doctor', '$issue', '$Medicine', '$Strength', '$size', '$Quantity', '$Instructions')";
 
     // Execute the query
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "<script>alert('New record created successfully');</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

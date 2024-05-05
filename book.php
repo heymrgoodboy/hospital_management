@@ -25,11 +25,11 @@ if (isset($_POST['submit'])) {
 
         // SQL query to insert data into the 'apposintment' table
         $query = "INSERT INTO appointment (user_id, name, reg_no, age, email, phone_number, date, time, issue, doctorname)
-                  VALUES ('$curr_user_id', '$name', '$reg_no', '$age', '$email', '$phone_number', '$date', '$time', '$issue', '$doctorname')";
+                  VALUES ($curr_user_id, '$name', '$reg_no', '$age', '$email', '$phone_number', '$date', '$time', '$issue', '$doctorname')";
 
         // Execute query
         if($conn->query($query) === TRUE){
-            echo "Registration successful";
+            echo "<script>alert('Registration successful');</script>";
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
